@@ -26,3 +26,8 @@ var inUse = db.Assets
     .ToList();
 displayAssets(inUse);
 
+
+//  add a new asset  
+// var newAsset = new Asset(0, "Tablet", "Reception", DateOnly.FromDateTime(DateTime.Now), true, 329.00);
+//db.Assets.Add(newAsset);
+//db.SaveChanges();
