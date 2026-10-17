@@ -31,3 +31,21 @@ displayAssets(inUse);
 // var newAsset = new Asset(0, "Tablet", "Reception", DateOnly.FromDateTime(DateTime.Now), true, 329.00);
 //db.Assets.Add(newAsset);
 //db.SaveChanges();
+
+
+// ---- UPDATE: change the purchase price of asset with id 3 ----
+var asset3 = db.Assets
+    .Where(a => a.ID == 3)
+    .SingleOrDefault(); // get a single record or NULL
+
+if (asset3 != null)
+{
+    Console.WriteLine();
+    Console.WriteLine($"Before change: {asset3}");
+    asset3.PurchasePrice = 575.00;
+    asset3.InUse = false;
+    Console.WriteLine($"After change:  {asset3}");
+
+    // Save change to memory objects to the database
+    db.SaveChanges();
+}
