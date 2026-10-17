@@ -16,3 +16,13 @@ using var db = new AssetsDbContext();
 Console.WriteLine("=== All assets ===");
 var assets = db.Assets.ToList();
 displayAssets(assets);
+
+// ---- SELECT: assets currently in use, most expensive first ----
+Console.WriteLine();
+Console.WriteLine("=== Assets in use (most expensive first) ===");
+var inUse = db.Assets
+    .Where(a => a.InUse)
+    .OrderByDescending(a => a.PurchasePrice)
+    .ToList();
+displayAssets(inUse);
+
